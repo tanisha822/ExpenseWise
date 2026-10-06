@@ -20,6 +20,29 @@ ExpenseWise is a Django-based personal expense management and analytics web appl
 * Remaining Budget Tracking
 * Budget Status Monitoring
 * Interactive Expense Analytics
+* Responsive User Interface
+
+## Screenshots
+
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+### Add Expense
+
+![Add Expense](screenshots/add-expense.png)
+
+### Expense List
+
+![Expense List](screenshots/expense-list.png)
+
+### Budget
+
+![Budget](screenshots/budget.png)
+
+### Analytics
+
+![Analytics](screenshots/analytics.png)
 
 ## Technologies Used
 
@@ -39,8 +62,37 @@ ExpenseWise is a Django-based personal expense management and analytics web appl
 ExpenseWise/
 │
 ├── accounts/
+│   ├── migrations/
+│   ├── templates/
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+│
 ├── expenses/
+│   ├── migrations/
+│   ├── static/
+│   ├── templates/
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── urls.py
+│   └── views.py
+│
 ├── expensewise/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+├── screenshots/
+│   ├── dashboard.png
+│   ├── add-expense.png
+│   ├── expense-list.png
+│   ├── budget.png
+│   └── analytics.png
+│
 ├── .gitignore
 ├── manage.py
 ├── requirements.txt
@@ -49,43 +101,51 @@ ExpenseWise/
 
 ## How to Run the Project
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```text
 git clone https://github.com/tanisha822/ExpenseWise.git
 ```
 
-### 2. Open the project folder
+### 2. Open the Project Folder
 
 ```text
 cd ExpenseWise
 ```
 
-### 3. Create and activate virtual environment
+### 3. Create Virtual Environment
 
 ```text
 python -m venv .venv
 ```
 
-Windows:
+### 4. Activate Virtual Environment
+
+For Windows:
 
 ```text
 .venv\Scripts\activate
 ```
 
-### 4. Install dependencies
+### 5. Install Dependencies
 
 ```text
 pip install -r requirements.txt
 ```
 
-### 5. Run migrations
+### 6. Run Database Migrations
 
 ```text
 python manage.py migrate
 ```
 
-### 6. Start the development server
+### 7. Create Superuser
+
+```text
+python manage.py createsuperuser
+```
+
+### 8. Start Development Server
 
 ```text
 python manage.py runserver
@@ -109,11 +169,15 @@ Expenses can be searched by title and filtered using category and date range.
 
 ### Budget Management
 
-Users can set a monthly budget and track their spending against it.
+Users can set a monthly budget and track their spending against the budget.
 
 ### Analytics
 
-The dashboard provides total expenses, average expense, monthly analysis and category-wise analysis.
+The dashboard provides total expenses, average expense, monthly analysis and category-wise expense analysis.
+
+### User Data Protection
+
+Each logged-in user can access and manage only their own expenses and budgets.
 
 ## Future Improvements
 
@@ -123,10 +187,12 @@ The dashboard provides total expenses, average expense, monthly analysis and cat
 * Email notifications
 * Deployment
 * Mobile-friendly improvements
+* Expense reports
+* Monthly financial insights
 
 ## Author
 
-Tanisha Barik
+**Tanisha Barik**
 
 B.Tech – Computer Science & Engineering
 
