@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Expense</title>
+    <link rel="stylesheet" href="{% static 'expenses/css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <div class="nav-content">
+        <div class="logo">
+            <h1>ExpenseWise</h1>
+            <p>Personal Expense & Analytics</p>
+        </div>
+
+        <nav>
+            <a href="{% url 'home' %}">Dashboard</a>
+            <a href="{% url 'home' %}#expenses">Expenses</a>
+            <a href="{% url 'home' %}#analysis">Analytics</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <section>
+
+        <div class="section-heading">
+            <div>
+                <span class="section-label">UPDATE TRANSACTION</span>
+                <h2>Edit Expense</h2>
+                <p>Update your expense details and save the changes.</p>
+            </div>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="title"
+                value="{{ expense.title }}"
+                placeholder="Expense title"
+                required
+            >
+
+            <input
+                type="number"
+                name="amount"
+                value="{{ expense.amount }}"
+                placeholder="Amount"
+                step="0.01"
+                required
+            >
+
+            <input
+                type="text"
+                name="category"
+                value="{{ expense.category }}"
+                placeholder="Category"
+                required
+            >
+
+            <input
+                type="date"
+                name="date"
+                value="{{ expense.date|date:'Y-m-d' }}"
+                required
+            >
+
+            <textarea
+                name="description"
+                placeholder="Description"
+            >{{ expense.description }}</textarea>
+
+            <button type="submit">Update Expense</button>
+
+            <a class="cancel-button" href="{% url 'home' %}">
+                Cancel
+            </a>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>ExpenseWise | Personal Expense & Analytics System</p>
+</footer>
+
+</body>
+</html>

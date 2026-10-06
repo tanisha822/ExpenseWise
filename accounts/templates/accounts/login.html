@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExpenseWise - Login</title>
+    <link rel="stylesheet" href="{% static 'expenses/css/style.css' %}">
+
+    <style>
+
+        .login-section {
+            max-width: 520px;
+            margin: 60px auto;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 15px 16px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 12px;
+            background-color: white;
+            color: darkslategray;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .login-form input::placeholder {
+            color: gray;
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: slateblue;
+            box-shadow: 0 0 0 4px rgba(106, 90, 205, 0.12);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, darkslateblue, slateblue);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(72, 61, 139, 0.25);
+        }
+
+        .login-message {
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            background-color: mistyrose;
+            color: firebrick;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .signup-link {
+            margin-top: 22px;
+            text-align: center;
+            color: gray;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: darkslateblue;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav-content">
+
+        <div class="logo">
+            <h1>ExpenseWise</h1>
+            <p>Personal Expense & Analytics</p>
+        </div>
+
+        <nav>
+            <a href="{% url 'signup' %}">Signup</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<main>
+
+    <section class="login-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">ACCOUNT</span>
+
+            <h2>Welcome Back</h2>
+
+            <p>
+                Login to your ExpenseWise account and manage your expenses.
+            </p>
+
+        </div>
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="login-message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <form method="POST" class="login-form">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                autocomplete="username"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p class="signup-link">
+            Don't have an account?
+            <a href="{% url 'signup' %}">
+                Create account
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        ExpenseWise | Personal Expense & Analytics System
+    </p>
+
+</footer>
+
+</body>
+</html>

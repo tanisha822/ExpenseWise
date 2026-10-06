@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ExpenseWise - Signup</title>
+    <link rel="stylesheet" href="{% static 'expenses/css/style.css' %}">
+
+    <style>
+
+        .signup-form input {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 15px;
+        }
+
+        .signup-form input::placeholder {
+            color: gray;
+        }
+
+        .signup-form input:focus {
+            outline: none;
+            border-color: slateblue;
+        }
+
+        .signup-form button {
+            padding: 13px 25px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 10px;
+            background-color: darkslateblue;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-link {
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: darkslateblue;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav-content">
+
+        <div class="logo">
+            <h1>ExpenseWise</h1>
+            <p>Personal Expense & Analytics</p>
+        </div>
+
+        <nav>
+            <a href="{% url 'login' %}">Login</a>
+        </nav>
+
+    </div>
+
+</header>
+
+<main>
+
+    <section>
+
+        <div class="section-heading">
+
+            <span class="section-label">ACCOUNT</span>
+
+            <h2>Create Account</h2>
+
+            <p>
+                Create your ExpenseWise account to manage your expenses.
+            </p>
+
+        </div>
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <p style="color: firebrick; font-weight: bold;">
+                    {{ message }}
+                </p>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <form method="POST" class="signup-form">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="first_name"
+                placeholder="Enter first name"
+                required
+            >
+
+            <input
+                type="text"
+                name="last_name"
+                placeholder="Enter last name"
+                required
+            >
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                required
+            >
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                required
+            >
+
+            <button type="submit">
+                Create Account
+            </button>
+
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="{% url 'login' %}">
+                Login here
+            </a>
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        ExpenseWise | Personal Expense & Analytics System
+    </p>
+
+</footer>
+
+</body>
+</html>
